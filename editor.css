@@ -1,0 +1,2686 @@
+.editor-container {
+    display: flex;
+    height: 100vh;
+    background-color: #f5f5f5;
+}
+
+/* 左侧编辑区样式 */
+.editor-sidebar {
+    width: 300px;
+    background: white;
+    border-right: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.editor-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.editor-title {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.editor-user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.editor-role {
+    color: #666;
+}
+
+.editor-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+.editor-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.editor-section {
+    margin-bottom: 24px;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    position: relative;
+}
+
+.section-icon-wrapper {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section-icon {
+    font-size: 16px;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.editor-input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+}
+
+.editor-input:focus {
+    outline: none;
+    border-color: #000;
+}
+
+.copy-btn, .link-btn {
+    position: absolute;
+    right: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px 8px;
+    color: #666;
+}
+
+.add-section {
+    margin-top: 32px;
+}
+
+.add-field-btn {
+    width: 100%;
+    padding: 12px;
+    background: none;
+    border: 1px dashed #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+}
+
+.add-field-btn:hover {
+    background-color: #f5f5f5;
+}
+
+.plus-icon {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* 中间预览区样式 */
+.preview-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.preview-header {
+    padding: 16px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.preview-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.preview-btn {
+    padding: 6px 12px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.preview-btn.active {
+    background: #f0f0f0;
+}
+
+.preview-tools {
+    display: flex;
+    gap: 8px;
+}
+
+.tool-btn {
+    padding: 6px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.tool-btn:hover {
+    background: #f0f0f0;
+}
+
+.preview-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* 右侧模板区样式 */
+.template-sidebar {
+    width: 280px;
+    background: white;
+    border-left: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+}
+
+.template-header {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.template-header h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.template-tip {
+    margin: 10px 0;
+    padding: 8px;
+    color: #666;
+    font-size: 14px;
+    line-height: 1.4;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.template-list {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow-y: auto;
+}
+
+.template-item {
+    cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.template-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.template-preview {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.template-name {
+    padding: 8px;
+    text-align: center;
+    font-size: 14px;
+    background: #f5f5f5;
+}
+
+/* 添加自定义字段样式 */
+.custom-field {
+    margin-top: 16px;
+    display: flex;
+    gap: 8px;
+    cursor: default;
+}
+
+.custom-field.dragging {
+    opacity: 0.5;
+    background: #f5f5f5;
+    border-radius: 4px;
+}
+
+.drag-handle {
+    cursor: move; /* 显示移动光标 */
+}
+
+.custom-field .editor-input {
+    flex: 1;
+}
+
+.custom-field-group {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.custom-field-actions {
+    display: flex;
+    align-items: center;
+}
+
+.custom-field-btn {
+    background: none;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+    color: #666;
+    font-size: 14px;
+}
+
+.custom-field-btn:hover {
+    color: #333;
+}
+
+/* 添加保存按钮样式 */
+.save-custom-fields {
+    margin-top: 16px;
+    padding: 8px 16px;
+    background-color: #000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    display: none; /* 默认隐藏，有自定义字段时显示 */
+}
+
+.save-custom-fields.show {
+    display: block;
+}
+
+.save-custom-fields:hover {
+    background-color: #333;
+}
+
+/* Rich Text Editor 样式 */
+.rich-text-editor {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.editor-toolbar {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+    background: #f8f8f8;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+}
+
+.toolbar-btn {
+    padding: 4px 8px;
+    background: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #666;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    transition: all 0.2s;
+}
+
+.toolbar-btn:hover {
+    background-color: #e8e8e8;
+    color: #333;
+}
+
+.toolbar-btn.active {
+    background-color: #e0e0e0;
+    color: #000;
+}
+
+.toolbar-separator {
+    color: #ddd;
+    margin: 0 4px;
+}
+
+.editor-content-area {
+    min-height: 200px;
+    padding: 16px;
+    outline: none;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.editor-content-area:focus {
+    background-color: #fff;
+}
+
+/* 为不同的标题样式添加样式 */
+.editor-content-area h1 {
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+.editor-content-area h2 {
+    font-size: 20px;
+    margin-bottom: 14px;
+}
+
+.editor-content-area h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.editor-content-area p {
+    margin-bottom: 12px;
+}
+
+.editor-content-area ul, 
+.editor-content-area ol {
+    margin-left: 24px;
+    margin-bottom: 12px;
+}
+
+.editor-content-area blockquote {
+    border-left: 4px solid #ddd;
+    padding-left: 16px;
+    margin: 12px 0;
+    color: #666;
+}
+
+.editor-content-area code {
+    background-color: #f5f5f5;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+/* 添加图片样式 */
+.editor-content-area img {
+    max-width: 100%;
+    height: auto;
+    margin: 8px 0;
+}
+
+/* 预览区域样式 */
+.preview-resume {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+.preview-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.preview-name {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #000;
+}
+
+.preview-title {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 16px;
+}
+
+.preview-contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 32px;
+}
+
+.preview-contact p {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #333;
+}
+
+.contact-icon {
+    color: #666;
+}
+
+.preview-summary {
+    margin-top: 32px;
+}
+
+.preview-summary h2 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #eee;
+}
+
+.summary-content {
+    color: #333;
+    line-height: 1.6;
+}
+
+/* 自定义字段预览样式 */
+.preview-custom-fields {
+    margin-top: 24px;
+}
+
+.custom-field-item {
+    display: flex;
+    margin-bottom: 8px;
+}
+
+.custom-field-name {
+    font-weight: 500;
+    margin-right: 8px;
+    color: #666;
+}
+
+/* 添加个人简介按钮样式 */
+.add-profile-btn {
+    width: 100%;
+    padding: 12px;
+    background: none;
+    border: 1px dashed #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+}
+
+.add-profile-btn:hover {
+    background-color: #f5f5f5;
+}
+
+.add-profile-btn .plus-icon {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* 修改弹窗样式 */
+.profile-modal,
+.experience-modal,
+.education-modal,
+.skill-modal,
+.language-modal,
+.award-modal,
+.certification-modal,
+.interest-modal,
+.project-modal,
+.publication-modal,
+.volunteer-modal,
+.reference-modal,
+.custom-section-modal,
+.portrait-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    margin: 20px;
+    position: relative;
+    z-index: 10000;
+}
+
+.modal-header {
+    padding: 16px 24px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #999;
+    padding: 4px;
+}
+
+.close-modal:hover {
+    color: #666;
+}
+
+.modal-body {
+    padding: 24px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #333;
+}
+
+.modal-input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.modal-input:focus {
+    outline: none;
+    border-color: #000;
+}
+
+.modal-input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.copy-link-btn {
+    position: absolute;
+    right: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px 8px;
+    color: #666;
+}
+
+.icon-hint {
+    margin-top: 4px;
+    font-size: 12px;
+    color: #999;
+}
+
+.modal-footer {
+    padding: 16px 24px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.create-btn {
+    padding: 8px 24px;
+    background-color: #000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.create-btn:hover {
+    background-color: #333;
+}
+
+/* 个人简介条目样式 */
+.profile-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.profile-item:hover {
+    background-color: #f9f9f9;
+}
+
+.profile-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.profile-title {
+    font-size: 14px;
+    color: #333;
+}
+
+.profile-subtitle {
+    font-size: 14px;
+    color: #666;
+}
+
+.profile-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.profile-action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: #999;
+    font-size: 14px;
+}
+
+.profile-action-btn:hover {
+    color: #666;
+}
+
+/* 个人简介预览样式 */
+.preview-profiles {
+    margin-top: 32px;
+}
+
+.preview-profiles h2 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #eee;
+}
+
+.profiles-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.profile-preview-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+}
+
+.profile-network {
+    font-weight: 500;
+    color: #333;
+}
+
+.profile-username {
+    color: #666;
+}
+
+/* 添加菜单样式 */
+.section-menu {
+    margin-left: auto;
+}
+
+.menu-trigger {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px 8px;
+    color: #666;
+    font-size: 16px;
+}
+
+.menu-trigger:hover {
+    color: #333;
+}
+
+.menu-dropdown {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 100;
+}
+
+.menu-dropdown.show {
+    display: block;
+}
+
+.menu-item {
+    display: block;
+    width: 100%;
+    padding: 8px 16px;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+    white-space: nowrap;
+}
+
+.menu-item:hover {
+    background-color: #f5f5f5;
+}
+
+/* 工作经验按钮样式 */
+.add-experience-btn {
+    width: 100%;
+    padding: 12px;
+    background: none;
+    border: 1px dashed #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+}
+
+.add-experience-btn:hover {
+    background-color: #f5f5f5;
+}
+
+.add-experience-btn .plus-icon {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* 工作经验预览样式 */
+.preview-experiences {
+    margin-top: 32px;
+}
+
+.preview-experiences h2 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #eee;
+}
+
+.experiences-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.experience-preview-item {
+    padding: 16px 0;
+}
+
+.experience-header {
+    margin-bottom: 12px;
+}
+
+.experience-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 4px;
+}
+
+.experience-meta {
+    color: #666;
+    font-size: 14px;
+}
+
+.experience-meta span {
+    margin-right: 8px;
+}
+
+.experience-website {
+    display: block;
+    color: #0066cc;
+    text-decoration: none;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.experience-content {
+    color: #333;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* 教育经历按钮样式 */
+.add-education-btn {
+    width: 100%;
+    padding: 12px;
+    background: none;
+    border: 1px dashed #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+}
+
+.add-education-btn:hover {
+    background-color: #f5f5f5;
+}
+
+.add-education-btn .plus-icon {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* 教育经历条目样式 */
+.education-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.education-item:hover {
+    background-color: #f9f9f9;
+}
+
+.education-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.education-school {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+.education-details {
+    display: flex;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+}
+
+.education-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.education-action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: #999;
+    font-size: 14px;
+}
+
+.education-action-btn:hover {
+    color: #666;
+}
+
+/* 教育经历预览样式 */
+.preview-educations {
+    margin-top: 32px;
+}
+
+.preview-educations h2 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #eee;
+}
+
+.educations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.education-preview-item {
+    padding: 16px 0;
+}
+
+.education-header {
+    margin-bottom: 12px;
+}
+
+.education-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 4px;
+}
+
+.education-meta {
+    color: #666;
+    font-size: 14px;
+}
+
+.education-meta span {
+    margin-right: 8px;
+}
+
+.education-website {
+    display: block;
+    color: #0066cc;
+    text-decoration: none;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.education-content {
+    color: #333;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* 专业技能按钮样式 */
+.add-skill-btn {
+    width: 100%;
+    padding: 12px;
+    background: none;
+    border: 1px dashed #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+}
+
+.add-skill-btn:hover {
+    background-color: #f5f5f5;
+}
+
+.add-skill-btn .plus-icon {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* 专业技能条目样式 */
+.skill-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.skill-item:hover {
+    background-color: #f9f9f9;
+}
+
+.skill-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.skill-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+.skill-details {
+    display: flex;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+}
+
+.skill-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.skill-action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: #999;
+    font-size: 14px;
+}
+
+.skill-action-btn:hover {
+    color: #666;
+}
+
+/* 专业技能预览样式 */
+.preview-skills {
+    margin-top: 32px;
+}
+
+.preview-skills h2 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #eee;
+}
+
+.skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.skill-preview-item {
+    padding: 16px 0;
+}
+
+.skill-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    gap: 24px;
+}
+
+.skill-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+    margin: 0;
+}
+
+.skill-progress {
+    flex: 1;
+    height: 4px;
+    background: #eee;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #000;
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.skill-meta {
+    color: #666;
+    font-size: 14px;
+}
+
+.skill-description {
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skill-tag {
+    padding: 4px 8px;
+    background: #f5f5f5;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #666;
+}
+
+/* 语言情况按钮样式 */
+.add-language-btn {
+    width: 100%;
+    padding: 12px;
+    background: none;
+    border: 1px dashed #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+}
+
+.add-language-btn:hover {
+    background-color: #f5f5f5;
+}
+
+.add-language-btn .plus-icon {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* 语言情况条目样式 */
+.language-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.language-item:hover {
+    background-color: #f9f9f9;
+}
+
+.language-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.language-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+.language-details {
+    display: flex;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+}
+
+.language-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.language-action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: #999;
+    font-size: 14px;
+}
+
+.language-action-btn:hover {
+    color: #666;
+}
+
+/* 语言情况预览样式 */
+.preview-languages {
+    margin-top: 32px;
+}
+
+.preview-languages h2 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #eee;
+}
+
+.languages-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.language-preview-item {
+    padding: 16px 0;
+}
+
+.language-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    gap: 24px;
+}
+
+.language-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+    margin: 0;
+}
+
+.language-progress {
+    flex: 1;
+    height: 4px;
+    background: #eee;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.language-meta {
+    color: #666;
+    font-size: 14px;
+}
+
+.language-description {
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+/* 奖品奖项按钮样式 */
+.add-award-btn {
+    width: 100%;
+    padding: 12px;
+    background: none;
+    border: 1px dashed #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+}
+
+.add-award-btn:hover {
+    background-color: #f5f5f5;
+}
+
+.add-award-btn .plus-icon {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* 奖品奖项条目样式 */
+.award-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.award-item:hover {
+    background-color: #f9f9f9;
+}
+
+.award-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.award-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+.award-details {
+    display: flex;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+}
+
+.award-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.award-action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: #999;
+    font-size: 14px;
+}
+
+.award-action-btn:hover {
+    color: #666;
+}
+
+/* 奖品奖项预览样式 */
+.preview-awards {
+    margin-top: 32px;
+}
+
+.preview-awards h2 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #eee;
+}
+
+.awards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.award-preview-item {
+    padding: 16px 0;
+}
+
+.award-header {
+    margin-bottom: 12px;
+}
+
+.award-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 4px;
+}
+
+.award-meta {
+    color: #666;
+    font-size: 14px;
+}
+
+.award-meta span {
+    margin-right: 8px;
+}
+
+.award-website {
+    display: block;
+    color: #0066cc;
+    text-decoration: none;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.award-content {
+    color: #333;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* 专业证书按钮样式 */
+.add-certification-btn {
+    width: 100%;
+    padding: 12px;
+    background: none;
+    border: 1px dashed #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+}
+
+.add-certification-btn:hover {
+    background-color: #f5f5f5;
+}
+
+.add-certification-btn .plus-icon {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* 专业证书条目样式 */
+.certification-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.certification-item:hover {
+    background-color: #f9f9f9;
+}
+
+.certification-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.certification-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+.certification-details {
+    display: flex;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+}
+
+.certification-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.certification-action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: #999;
+    font-size: 14px;
+}
+
+.certification-action-btn:hover {
+    color: #666;
+}
+
+/* 专业证书预览样式 */
+.preview-certifications {
+    margin-top: 32px;
+}
+
+.preview-certifications h2 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #eee;
+}
+
+.certifications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.certification-preview-item {
+    padding: 16px 0;
+}
+
+.certification-header {
+    margin-bottom: 12px;
+}
+
+.certification-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 4px;
+}
+
+.certification-meta {
+    color: #666;
+    font-size: 14px;
+}
+
+.certification-meta span {
+    margin-right: 8px;
+}
+
+.certification-website {
+    display: block;
+    color: #0066cc;
+    text-decoration: none;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.certification-content {
+    color: #333;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* 兴趣爱好按钮样式 */
+.add-interest-btn {
+    width: 100%;
+    padding: 12px;
+    background: none;
+    border: 1px dashed #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+}
+
+.add-interest-btn:hover {
+    background-color: #f5f5f5;
+}
+
+.add-interest-btn .plus-icon {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* 兴趣爱好条目样式 */
+.interest-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.interest-item:hover {
+    background-color: #f9f9f9;
+}
+
+.interest-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.interest-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+.interest-details {
+    display: flex;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+}
+
+.interest-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.interest-action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: #999;
+    font-size: 14px;
+}
+
+.interest-action-btn:hover {
+    color: #666;
+}
+
+/* 兴趣爱好预览样式 */
+.preview-interests {
+    margin-top: 32px;
+}
+
+.preview-interests h2 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #eee;
+}
+
+.interests-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.interest-preview-item {
+    background: #f9f9f9;
+    padding: 16px;
+    border-radius: 8px;
+    min-width: 200px;
+}
+
+.interest-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 8px;
+}
+
+.interest-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.interest-tag {
+    padding: 4px 8px;
+    background: #fff;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #666;
+}
+
+/* 项目经验按钮样式 */
+.add-project-btn {
+    width: 100%;
+    padding: 12px;
+    background: none;
+    border: 1px dashed #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+}
+
+.add-project-btn:hover {
+    background-color: #f5f5f5;
+}
+
+.add-project-btn .plus-icon {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* 项目经验条目样式 */
+.project-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.project-item:hover {
+    background-color: #f9f9f9;
+}
+
+.project-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.project-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+.project-details {
+    display: flex;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+}
+
+.project-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.project-action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: #999;
+    font-size: 14px;
+}
+
+.project-action-btn:hover {
+    color: #666;
+}
+
+/* 项目经验预览样式 */
+.preview-projects {
+    margin-top: 32px;
+}
+
+.preview-projects h2 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #eee;
+}
+
+.projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.project-preview-item {
+    padding: 16px 0;
+}
+
+.project-header {
+    margin-bottom: 12px;
+}
+
+.project-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 4px;
+}
+
+.project-meta {
+    color: #666;
+    font-size: 14px;
+}
+
+.project-meta span {
+    margin-right: 8px;
+}
+
+.project-website {
+    display: block;
+    color: #0066cc;
+    text-decoration: none;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.project-content {
+    color: #333;
+    line-height: 1.6;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.project-tag {
+    padding: 4px 8px;
+    background: #f5f5f5;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #666;
+}
+
+/* 发表作品按钮样式 */
+.add-publication-btn {
+    width: 100%;
+    padding: 12px;
+    background: none;
+    border: 1px dashed #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+}
+
+.add-publication-btn:hover {
+    background-color: #f5f5f5;
+}
+
+.add-publication-btn .plus-icon {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* 发表作品条目样式 */
+.publication-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.publication-item:hover {
+    background-color: #f9f9f9;
+}
+
+.publication-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.publication-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+.publication-details {
+    display: flex;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+}
+
+.publication-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.publication-action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: #999;
+    font-size: 14px;
+}
+
+.publication-action-btn:hover {
+    color: #666;
+}
+
+/* 发表作品预览样式 */
+.preview-publications {
+    margin-top: 32px;
+}
+
+.preview-publications h2 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #eee;
+}
+
+.publications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.publication-preview-item {
+    padding: 16px 0;
+}
+
+.publication-header {
+    margin-bottom: 12px;
+}
+
+.publication-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 4px;
+}
+
+.publication-meta {
+    color: #666;
+    font-size: 14px;
+}
+
+.publication-meta span {
+    margin-right: 8px;
+}
+
+.publication-website {
+    display: block;
+    color: #0066cc;
+    text-decoration: none;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.publication-content {
+    color: #333;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* 志愿经历按钮样式 */
+.add-volunteer-btn {
+    width: 100%;
+    padding: 12px;
+    background: none;
+    border: 1px dashed #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+}
+
+.add-volunteer-btn:hover {
+    background-color: #f5f5f5;
+}
+
+.add-volunteer-btn .plus-icon {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* 志愿经历条目样式 */
+.volunteer-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.volunteer-item:hover {
+    background-color: #f9f9f9;
+}
+
+.volunteer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.volunteer-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+.volunteer-details {
+    display: flex;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+}
+
+.volunteer-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.volunteer-action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: #999;
+    font-size: 14px;
+}
+
+.volunteer-action-btn:hover {
+    color: #666;
+}
+
+/* 志愿经历预览样式 */
+.preview-volunteers {
+    margin-top: 32px;
+}
+
+.preview-volunteers h2 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #eee;
+}
+
+.volunteers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.volunteer-preview-item {
+    padding: 16px 0;
+}
+
+.volunteer-header {
+    margin-bottom: 12px;
+}
+
+.volunteer-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 4px;
+}
+
+.volunteer-meta {
+    color: #666;
+    font-size: 14px;
+}
+
+.volunteer-meta span {
+    margin-right: 8px;
+}
+
+.volunteer-website {
+    display: block;
+    color: #0066cc;
+    text-decoration: none;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.volunteer-content {
+    color: #333;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* 推荐人/信按钮样式 */
+.add-reference-btn {
+    width: 100%;
+    padding: 12px;
+    background: none;
+    border: 1px dashed #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+}
+
+.add-reference-btn:hover {
+    background-color: #f5f5f5;
+}
+
+.add-reference-btn .plus-icon {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* 推荐人/信条目样式 */
+.reference-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.reference-item:hover {
+    background-color: #f9f9f9;
+}
+
+.reference-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.reference-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+.reference-details {
+    display: flex;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+}
+
+.reference-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.reference-action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: #999;
+    font-size: 14px;
+}
+
+.reference-action-btn:hover {
+    color: #666;
+}
+
+/* 推荐人/信预览样式 */
+.preview-references {
+    margin-top: 32px;
+}
+
+.preview-references h2 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #eee;
+}
+
+.references-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.reference-preview-item {
+    padding: 16px 0;
+}
+
+.reference-header {
+    margin-bottom: 12px;
+}
+
+.reference-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 4px;
+}
+
+.reference-meta {
+    color: #666;
+    font-size: 14px;
+}
+
+.reference-meta span {
+    margin-right: 8px;
+}
+
+.reference-website {
+    display: block;
+    color: #0066cc;
+    text-decoration: none;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.reference-content {
+    color: #333;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* 添加新版块样式 */
+.add-section-wrapper {
+    padding: 16px 0;
+    border-top: 1px solid #eee;
+    margin-top: 16px;
+}
+
+.add-section-btn {
+    width: 100%;
+    padding: 12px;
+    background: none;
+    border: 1px dashed #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+}
+
+.add-section-btn:hover {
+    background-color: #f5f5f5;
+}
+
+.add-section-btn .plus-icon {
+    font-size: 18px;
+    font-weight: normal;
+}
+
+/* 自定义章节预览样式 */
+.preview-custom-section {
+    margin-top: 32px;
+}
+
+.preview-custom-section h2 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #eee;
+}
+
+.custom-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.custom-preview-item {
+    padding: 16px 0;
+}
+
+.custom-header {
+    margin-bottom: 12px;
+}
+
+.custom-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 4px;
+}
+
+.custom-meta {
+    color: #666;
+    font-size: 14px;
+}
+
+.custom-meta span {
+    margin-right: 8px;
+}
+
+.custom-website {
+    display: block;
+    color: #0066cc;
+    text-decoration: none;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.custom-content {
+    color: #333;
+    line-height: 1.6;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.custom-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.custom-tag {
+    padding: 4px 8px;
+    background: #f5f5f5;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #666;
+}
+
+/* 肖像照片上传区域样式 */
+.portrait-upload-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 20px;
+}
+
+.portrait-preview {
+    width: 320px;
+    height: 320px;
+    border: 2px dashed #e0e0e0;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background-color: #fafafa;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.portrait-preview:hover {
+    border-color: #000;
+    background-color: #f5f5f5;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.upload-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    color: #666;
+    padding: 40px;
+    text-align: center;
+}
+
+.upload-icon {
+    font-size: 48px;
+    color: #000;
+    margin-bottom: 8px;
+}
+
+.upload-text {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+}
+
+.upload-hint {
+    font-size: 14px;
+    color: #666;
+}
+
+.preview-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.upload-btn {
+    padding: 12px 24px;
+    background-color: #000;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.upload-btn:hover {
+    background-color: #333;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 添加照片按钮样式 */
+.add-portrait-btn {
+    width: 100%;
+    padding: 16px;
+    background: none;
+    border: 2px dashed #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.add-portrait-btn:hover {
+    background-color: #fafafa;
+    border-color: #000;
+}
+
+.add-portrait-btn .plus-icon {
+    font-size: 20px;
+    font-weight: normal;
+}
+
+/* 肖像照片预览样式 */
+.preview-portraits {
+    margin-top: 32px;
+}
+
+.preview-portraits h2 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #eee;
+}
+
+.portraits-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.portrait-preview-item {
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.preview-portrait-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 工具栏按钮样式 */
+.toolbar button {
+    padding: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.toolbar button:hover {
+    opacity: 1;
+}
+
+.toolbar button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* 简历内容区域样式 */
+.resume-content {
+    transform-origin: top center;
+    transition: transform 0.2s;
+    padding: 40px;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+/* 编辑区域样式 */
+[contenteditable="true"] {
+    outline: none;
+    padding: 8px;
+    border: 1px solid transparent;
+}
+
+[contenteditable="true"]:hover {
+    border-color: #eee;
+}
+
+[contenteditable="true"]:focus {
+    border-color: #000;
+}
+
+/* 拖拽排序相关样式 */
+.section.dragging {
+    opacity: 0.5;
+    background: #f5f5f5;
+}
+
+/* 工具按钮激活状态 */
+.tool-btn.active {
+    background-color: #e0e0e0;
+}
+
+/* 打印样式 */
+@media print {
+    .preview-tools {
+        display: none;
+    }
+}
+
+/* AI 助手相关样式 */
+.ai-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.ai-modal .modal-content {
+    background: white;
+    border-radius: 12px;
+    width: 600px;
+    max-width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.ai-features {
+    display: grid;
+    gap: 16px;
+    padding: 20px;
+}
+
+.ai-feature-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.ai-feature-btn:hover {
+    border-color: #2196F3;
+    background: #f5f9ff;
+}
+
+.ai-feature-btn span {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.ai-feature-btn small {
+    color: #666;
+    font-size: 14px;
+}
+
+.ai-workspace {
+    padding: 20px;
+    border-top: 1px solid #eee;
+}
+
+.ai-input {
+    width: 100%;
+    height: 120px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    resize: vertical;
+    margin-bottom: 16px;
+}
+
+.ai-controls {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.ai-generate-btn {
+    padding: 8px 24px;
+    background: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.ai-cancel-btn {
+    padding: 8px 24px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.ai-result {
+    padding: 16px;
+    background: #f5f5f5;
+    border-radius: 8px;
+    display: none;
+} 

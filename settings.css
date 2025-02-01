@@ -1,0 +1,290 @@
+.settings-content {
+    flex: 1;
+    padding: 32px;
+    background: #f5f5f5;
+}
+
+.settings-content h1 {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 32px;
+}
+
+.settings-section {
+    background: white;
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.settings-section h2 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.section-desc {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 24px;
+}
+
+.settings-form {
+    max-width: 600px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.settings-input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.settings-input:focus {
+    outline: none;
+    border-color: #000;
+}
+
+.settings-input:disabled {
+    background: #f5f5f5;
+    cursor: not-allowed;
+}
+
+.avatar-upload {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.current-avatar {
+    width: 48px;
+    height: 48px;
+    background: #2196f3;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+}
+
+.upload-btn {
+    padding: 8px 16px;
+    background: white;
+    border: 1px solid #000;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.upload-btn:hover {
+    background: #f5f5f5;
+}
+
+.verified-badge {
+    display: inline-flex;
+    align-items: center;
+    color: #4caf50;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.password-section,
+.two-factor-section {
+    margin-top: 24px;
+}
+
+.password-section h3,
+.two-factor-section h3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+.save-btn,
+.enable-2fa-btn {
+    padding: 8px 16px;
+    background: #000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 16px;
+}
+
+.save-btn:hover,
+.enable-2fa-btn:hover {
+    background: #333;
+}
+
+.two-factor-section p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+
+.help-text {
+    font-size: 14px;
+    color: #666;
+    margin-top: 4px;
+}
+
+.text-link {
+    color: #2196f3;
+    text-decoration: none;
+}
+
+.text-link:hover {
+    text-decoration: underline;
+}
+
+.api-desc {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.api-notice {
+    margin-top: 20px;
+    padding: 16px;
+    background: #f5f5f5;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.api-warning {
+    margin-top: 20px;
+    padding: 16px;
+    background: #fff3e0;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #e65100;
+    line-height: 1.5;
+}
+
+.api-warning a {
+    color: #e65100;
+    text-decoration: underline;
+}
+
+.danger-zone {
+    border: 1px solid #ff4d4f;
+    position: relative;
+}
+
+.danger-zone::before {
+    content: '⚠️';
+    position: absolute;
+    top: -12px;
+    left: 24px;
+    background: white;
+    padding: 0 8px;
+}
+
+.delete-account h3 {
+    color: #ff4d4f;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+.delete-btn {
+    padding: 8px 16px;
+    background: #ff4d4f;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.delete-btn:disabled {
+    background: #ffa39e;
+    cursor: not-allowed;
+}
+
+.delete-btn:not(:disabled):hover {
+    background: #ff7875;
+}
+
+/* 深色主题样式 */
+body.dark-theme {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+body.dark-theme .settings-content {
+    background: #1a1a1a;
+}
+
+body.dark-theme .settings-section {
+    background: #2d2d2d;
+    border-color: #3d3d3d;
+}
+
+body.dark-theme .settings-input {
+    background: #3d3d3d;
+    border-color: #4d4d4d;
+    color: #fff;
+}
+
+body.dark-theme .settings-input:disabled {
+    background: #2d2d2d;
+}
+
+body.dark-theme .section-desc,
+body.dark-theme .help-text,
+body.dark-theme .api-desc {
+    color: #999;
+}
+
+body.dark-theme .api-notice {
+    background: #2d2d2d;
+    color: #999;
+}
+
+body.dark-theme .danger-zone::before {
+    background: #2d2d2d;
+}
+
+body.dark-theme .text-link {
+    color: #4a9eff;
+}
+
+body.dark-theme .save-btn,
+body.dark-theme .enable-2fa-btn {
+    background: #4a9eff;
+}
+
+body.dark-theme .save-btn:hover,
+body.dark-theme .enable-2fa-btn:hover {
+    background: #2d8aff;
+}
+
+/* 修改主题选择器样式 */
+.settings-input.theme-select {
+    cursor: pointer;
+}
+
+/* 确保深色主题下的下拉菜单也是深色的 */
+body.dark-theme select.settings-input option {
+    background: #2d2d2d;
+    color: #fff;
+} 

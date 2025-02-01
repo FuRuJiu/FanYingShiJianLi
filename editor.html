@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编辑简历</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="editor.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="editor-container">
+        <!-- 左侧信息编辑区 -->
+        <div class="editor-sidebar">
+            <div class="editor-header">
+                <div class="editor-title">基础</div>
+                <div class="editor-user">
+                    <span class="editor-role">教师</span>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='12' fill='%23e0e0e0'/%3E%3Cpath d='M12 14c2.2 0 4-1.8 4-4s-1.8-4-4-4-4 1.8-4 4 1.8 4 4 4zm0 2c-2.7 0-8 1.3-8 4v2h16v-2c0-2.7-5.3-4-8-4z' fill='%23bdbdbd'/%3E%3C/svg%3E" alt="用户头像" class="editor-avatar">
+                </div>
+            </div>
+            <div class="editor-content">
+                <!-- 全名 -->
+                <div class="editor-section">
+                    <div class="section-header">
+                        <div class="section-icon-wrapper">
+                            <span class="section-icon">👤</span>
+                        </div>
+                        <span>全名</span>
+                    </div>
+                    <input type="text" class="editor-input" placeholder="请输入您的姓名">
+                </div>
+
+                <!-- 标题 -->
+                <div class="editor-section">
+                    <div class="section-header">
+                        <div class="section-icon-wrapper">
+                            <span class="section-icon">🏷</span>
+                        </div>
+                        <span>标题</span>
+                    </div>
+                    <input type="text" class="editor-input" placeholder="请输入您的职位">
+                </div>
+
+                <!-- 电子邮件 -->
+                <div class="editor-section">
+                    <div class="section-header">
+                        <div class="section-icon-wrapper">
+                            <span class="section-icon">📧</span>
+                        </div>
+                        <span>电子邮件</span>
+                    </div>
+                    <input type="email" class="editor-input" placeholder="请输入您的邮箱">
+                </div>
+
+                <!-- 网站 -->
+                <div class="editor-section">
+                    <div class="section-header">
+                        <div class="section-icon-wrapper">
+                            <span class="section-icon">🌐</span>
+                        </div>
+                        <span>网站</span>
+                    </div>
+                    <div class="input-group">
+                        <input type="url" class="editor-input" value="https://example.com">
+                        <button class="link-btn">🔗</button>
+                    </div>
+                </div>
+
+                <!-- 电话 -->
+                <div class="editor-section">
+                    <div class="section-header">
+                        <div class="section-icon-wrapper">
+                            <span class="section-icon">📞</span>
+                        </div>
+                        <span>电话</span>
+                    </div>
+                    <input type="tel" class="editor-input" value="+1 (123) 4567 7890">
+                </div>
+
+                <!-- 住所 -->
+                <div class="editor-section">
+                    <div class="section-header">
+                        <div class="section-icon-wrapper">
+                            <span class="section-icon">📍</span>
+                        </div>
+                        <span>住所</span>
+                    </div>
+                    <input type="text" class="editor-input" placeholder="请输入您的住所">
+                </div>
+
+                <!-- 添加自定义字段 -->
+                <div class="editor-section add-section">
+                    <button class="add-field-btn">
+                        <span class="plus-icon">+</span>
+                        添加自定义字段
+                    </button>
+                    <div class="custom-fields"></div>
+                    <button class="save-custom-fields">保存更改</button>
+                </div>
+
+                <!-- Summary 部分 -->
+                <div class="editor-section">
+                    <div class="section-header">
+                        <div class="section-icon-wrapper">
+                            <span class="section-icon">📝</span>
+                        </div>
+                        <span>总览</span>
+                    </div>
+                    <div class="rich-text-editor">
+                        <div class="editor-toolbar">
+                            <button class="toolbar-btn" data-command="bold" title="加粗">B</button>
+                            <button class="toolbar-btn" data-command="italic" title="倾斜">I</button>
+                            <button class="toolbar-btn" data-command="underline" title="下划线">U</button>
+                            <span class="toolbar-separator">|</span>
+                            <button class="toolbar-btn" data-command="justifyLeft" title="左对齐">⇤</button>
+                            <button class="toolbar-btn" data-command="justifyCenter" title="居中">⇋</button>
+                            <button class="toolbar-btn" data-command="justifyRight" title="右对齐">⇥</button>
+                            <span class="toolbar-separator">|</span>
+                            <button class="toolbar-btn" data-command="insertOrderedList" title="添加序号">1.</button>
+                            <button class="toolbar-btn" data-command="insertImage" title="导入图片">🖼</button>
+                            <button class="toolbar-btn" data-command="undo" title="撤销">↺</button>
+                        </div>
+                        <div class="editor-content-area" contenteditable="true">
+                            <!-- 编辑区域 -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 修改个人简介部分 -->
+                <div class="editor-section">
+                    <div class="section-header">
+                        <div class="section-icon-wrapper">
+                            <span class="section-icon">👤</span>
+                        </div>
+                        <span>个人简介</span>
+                        <div class="section-menu">
+                            <button class="menu-trigger">☰</button>
+                            <div class="menu-dropdown">
+                                <button class="menu-item add-item">增加一项</button>
+                                <button class="menu-item toggle-visibility">
+                                    <span class="visibility-text">隐藏简介</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="add-profile-btn">
+                        <span class="plus-icon">+</span>
+                        增加一项
+                    </button>
+                </div>
+
+                <!-- 在个人简介部分后添加工作经验部分 -->
+                <div class="editor-section">
+                    <div class="section-header">
+                        <div class="section-icon-wrapper">
+                            <span class="section-icon" data-icon="💼">💼</span>
+                        </div>
+                        <span>工作经验</span>
+                        <div class="section-menu">
+                            <button class="menu-trigger">☰</button>
+                            <div class="menu-dropdown">
+                                <button class="menu-item add-experience">添加一项</button>
+                                <button class="menu-item toggle-experience-visibility">
+                                    <span class="visibility-text">隐藏经验</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="add-experience-btn">
+                        <span class="plus-icon">+</span>
+                        添加一项
+                    </button>
+                </div>
+
+                <!-- 在工作经验部分后添加教育经历部分 -->
+                <div class="editor-section">
+                    <div class="section-header">
+                        <div class="section-icon-wrapper">
+                            <span class="section-icon" data-icon="🎓">🎓</span>
+                        </div>
+                        <span>教育经历</span>
+                        <div class="section-menu">
+                            <button class="menu-trigger">☰</button>
+                            <div class="menu-dropdown">
+                                <button class="menu-item add-education">再加一个</button>
+                                <button class="menu-item toggle-education-visibility">
+                                    <span class="visibility-text">隐藏经历</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="add-education-btn">
+                        <span class="plus-icon">+</span>
+                        再加一个
+                    </button>
+                </div>
+
+                <!-- 在教育经历部分后添加专业技能部分 -->
+                <div class="editor-section">
+                    <div class="section-header">
+                        <div class="section-icon-wrapper">
+                            <span class="section-icon" data-icon="⚡">⚡</span>
+                        </div>
+                        <span>专业技能</span>
+                        <div class="section-menu">
+                            <button class="menu-trigger">☰</button>
+                            <div class="menu-dropdown">
+                                <button class="menu-item add-skill">再来一个</button>
+                                <button class="menu-item toggle-skill-visibility">
+                                    <span class="visibility-text">隐藏技能</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="add-skill-btn">
+                        <span class="plus-icon">+</span>
+                        再来一个
+                    </button>
+                </div>
+
+                <!-- 在专业技能部分后添加语言情况部分 -->
+                <div class="editor-section">
+                    <div class="section-header">
+                        <div class="section-icon-wrapper">
+                            <span class="section-icon" data-icon="🗣">🗣</span>
+                        </div>
+                        <span>语言情况</span>
+                        <div class="section-menu">
+                            <button class="menu-trigger">☰</button>
+                            <div class="menu-dropdown">
+                                <button class="menu-item add-language">添加语言</button>
+                                <button class="menu-item toggle-language-visibility">
+                                    <span class="visibility-text">隐藏语言</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="add-language-btn">
+                        <span class="plus-icon">+</span>
+                        添加语言
+                    </button>
+                </div>
+
+                <!-- 在语言情况部分后添加奖品奖项部分 -->
+                <div class="editor-section">
+                    <div class="section-header">
+                        <div class="section-icon-wrapper">
+                            <span class="section-icon" data-icon="🏆">🏆</span>
+                        </div>
+                        <span>奖品奖项</span>
+                        <div class="section-menu">
+                            <button class="menu-trigger">☰</button>
+                            <div class="menu-dropdown">
+                                <button class="menu-item add-award">增加奖项</button>
+                                <button class="menu-item toggle-award-visibility">
+                                    <span class="visibility-text">隐藏奖项</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="add-award-btn">
+                        <span class="plus-icon">+</span>
+                        增加奖项
+                    </button>
+                </div>
+
+                <!-- 在奖品奖项部分后添加专业证书部分 -->
+                <div class="editor-section">
+                    <div class="section-header">
+                        <div class="section-icon-wrapper">
+                            <span class="section-icon" data-icon="📜">📜</span>
+                        </div>
+                        <span>专业证书</span>
+                        <div class="section-menu">
+                            <button class="menu-trigger">☰</button>
+                            <div class="menu-dropdown">
+                                <button class="menu-item add-certification">增加证书</button>
+                                <button class="menu-item toggle-certification-visibility">
+                                    <span class="visibility-text">隐藏证书</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="add-certification-btn">
+                        <span class="plus-icon">+</span>
+                        增加证书
+                    </button>
+                </div>
+
+                <!-- 在专业证书部分后添加兴趣爱好部分 -->
+                <div class="editor-section">
+                    <div class="section-header">
+                        <div class="section-icon-wrapper">
+                            <span class="section-icon" data-icon="🎮">🎮</span>
+                        </div>
+                        <span>兴趣爱好</span>
+                        <div class="section-menu">
+                            <button class="menu-trigger">☰</button>
+                            <div class="menu-dropdown">
+                                <button class="menu-item add-interest">添加爱好</button>
+                                <button class="menu-item toggle-interest-visibility">
+                                    <span class="visibility-text">隐藏兴趣</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="add-interest-btn">
+                        <span class="plus-icon">+</span>
+                        添加爱好
+                    </button>
+                </div>
+
+                <!-- 在兴趣爱好部分后添加项目经验部分 -->
+                <div class="editor-section">
+                    <div class="section-header">
+                        <div class="section-icon-wrapper">
+                            <span class="section-icon" data-icon="🚀">🚀</span>
+                        </div>
+                        <span>项目经验</span>
+                        <div class="section-menu">
+                            <button class="menu-trigger">☰</button>
+                            <div class="menu-dropdown">
+                                <button class="menu-item add-project">添加项目</button>
+                                <button class="menu-item toggle-project-visibility">
+                                    <span class="visibility-text">隐藏项目</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="add-project-btn">
+                        <span class="plus-icon">+</span>
+                        添加项目
+                    </button>
+                </div>
+
+                <!-- 在项目经验部分后添加发表作品部分 -->
+                <div class="editor-section">
+                    <div class="section-header">
+                        <div class="section-icon-wrapper">
+                            <span class="section-icon" data-icon="📝">📝</span>
+                        </div>
+                        <span>发表作品</span>
+                        <div class="section-menu">
+                            <button class="menu-trigger">☰</button>
+                            <div class="menu-dropdown">
+                                <button class="menu-item add-publication">添加作品</button>
+                                <button class="menu-item toggle-publication-visibility">
+                                    <span class="visibility-text">隐藏作品</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="add-publication-btn">
+                        <span class="plus-icon">+</span>
+                        添加作品
+                    </button>
+                </div>
+
+                <!-- 在发表作品部分后添加志愿经历部分 -->
+                <div class="editor-section">
+                    <div class="section-header">
+                        <div class="section-icon-wrapper">
+                            <span class="section-icon" data-icon="🤝">🤝</span>
+                        </div>
+                        <span>志愿经历</span>
+                        <div class="section-menu">
+                            <button class="menu-trigger">☰</button>
+                            <div class="menu-dropdown">
+                                <button class="menu-item add-volunteer">增加经历</button>
+                                <button class="menu-item toggle-volunteer-visibility">
+                                    <span class="visibility-text">隐藏经历</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="add-volunteer-btn">
+                        <span class="plus-icon">+</span>
+                        增加经历
+                    </button>
+                </div>
+
+                <!-- 修改推荐人/信部分的按钮文本 -->
+                <div class="editor-section">
+                    <div class="section-header">
+                        <div class="section-icon-wrapper">
+                            <span class="section-icon" data-icon="👥">👥</span>
+                        </div>
+                        <span>推荐人/信</span>
+                        <div class="section-menu">
+                            <button class="menu-trigger">☰</button>
+                            <div class="menu-dropdown">
+                                <button class="menu-item add-reference">添加推荐</button>
+                                <button class="menu-item toggle-reference-visibility">
+                                    <span class="visibility-text">隐藏推荐</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="add-reference-btn">
+                        <span class="plus-icon">+</span>
+                        添加推荐
+                    </button>
+                </div>
+
+                <!-- 在推荐人/信部分后添加肖像照片部分 -->
+                <div class="editor-section">
+                    <div class="section-header">
+                        <div class="section-icon-wrapper">
+                            <span class="section-icon" data-icon="📷">📷</span>
+                        </div>
+                        <span>肖像照片</span>
+                        <div class="section-menu">
+                            <button class="menu-trigger">☰</button>
+                            <div class="menu-dropdown">
+                                <button class="menu-item add-portrait">添加照片</button>
+                                <button class="menu-item toggle-portrait-visibility">
+                                    <span class="visibility-text">隐藏照片</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="add-portrait-btn">
+                        <span class="plus-icon">+</span>
+                        添加照片
+                    </button>
+                </div>
+
+                <!-- 在推荐人/信部分后添加"添加新章节"部分 -->
+                <div class="add-section-wrapper">
+                    <button class="add-section-btn">
+                        <span class="plus-icon">⊕</span>
+                        添加新章节
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 中间预览区 -->
+        <div class="preview-container">
+            <div class="preview-header">
+                <div class="preview-actions">
+                    <h3>简历预览</h3>
+                </div>
+                <div class="preview-tools">
+                    <button class="tool-btn" title="撤销">↩</button>
+                    <button class="tool-btn" title="重做">↪</button>
+                    <button class="tool-btn" title="分享">⇱</button>
+                    <button class="tool-btn" title="放大">🔍</button>
+                    <button class="tool-btn" title="缩小">🔍-</button>
+                    <button class="tool-btn sort-btn" title="调整顺序">↕️</button>
+                    <button class="tool-btn template-btn" title="更改模板">🎨</button>
+                    <button class="tool-btn export-btn" title="导出PDF">📄</button>
+                    <button class="tool-btn ai-btn" title="AI助手">🤖</button>
+                </div>
+            </div>
+            <div class="preview-content">
+                <!-- 实时预览区域 -->
+                <div class="resume-preview">
+                    <!-- 简历内容将通过 JavaScript 动态更新 -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 右侧模板区 -->
+        <div class="template-sidebar">
+            <div class="template-header">
+                <h2>模板</h2>
+                <p class="template-tip">请先点击中间区域右上角的更改模板按钮再选择模板样式</p>
+            </div>
+            <div class="template-list">
+                <div class="template-item">
+                    <div class="template-preview">Azurill</div>
+                    <div class="template-name">Azurill</div>
+                </div>
+                <div class="template-item">
+                    <div class="template-preview">Bronzor</div>
+                    <div class="template-name">Bronzor</div>
+                </div>
+                <div class="template-item">
+                    <div class="template-preview">Cascoon</div>
+                    <div class="template-name">Cascoon</div>
+                </div>
+                <div class="template-item">
+                    <div class="template-preview">Diglett</div>
+                    <div class="template-name">Diglett</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="editor.js"></script>
+    <!-- 在 body 末尾添加弹窗 -->
+    <div class="profile-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>创建新条目</h3>
+                <button class="close-modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>网络</label>
+                    <input type="text" class="modal-input" placeholder="GitHub">
+                </div>
+                <div class="form-group">
+                    <label>用户名</label>
+                    <input type="text" class="modal-input" placeholder="john.doe">
+                </div>
+                <div class="form-group">
+                    <label>网站</label>
+                    <div class="modal-input-group">
+                        <input type="text" class="modal-input" placeholder="https://github.com/johndoe">
+                        <button class="copy-link-btn">📋</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>图标</label>
+                    <input type="text" class="modal-input" placeholder="github">
+                    <div class="icon-hint">由 Simple Icons 支持</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="create-btn">创建</button>
+            </div>
+        </div>
+    </div>
+    <!-- 在 body 末尾添加工作经验弹窗 -->
+    <div class="experience-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>创建新条目</h3>
+                <button class="close-modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>公司</label>
+                    <input type="text" class="modal-input" placeholder="请输入公司名称">
+                </div>
+                <div class="form-group">
+                    <label>职位</label>
+                    <input type="text" class="modal-input" placeholder="请输入职位名称">
+                </div>
+                <div class="form-group">
+                    <label>日期或日期范围</label>
+                    <input type="text" class="modal-input" placeholder="2023 年 3 月至今">
+                </div>
+                <div class="form-group">
+                    <label>位置</label>
+                    <input type="text" class="modal-input" placeholder="请输入工作地点">
+                </div>
+                <div class="form-group">
+                    <label>网站</label>
+                    <div class="modal-input-group">
+                        <input type="text" class="modal-input" placeholder="请输入公司网站">
+                        <button class="copy-link-btn">📋</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>总结</label>
+                    <div class="rich-text-editor">
+                        <div class="editor-toolbar">
+                            <button class="toolbar-btn" data-command="bold" title="加粗">B</button>
+                            <button class="toolbar-btn" data-command="italic" title="倾斜">I</button>
+                            <button class="toolbar-btn" data-command="underline" title="下划线">U</button>
+                            <span class="toolbar-separator">|</span>
+                            <button class="toolbar-btn" data-command="justifyLeft" title="左对齐">⇤</button>
+                            <button class="toolbar-btn" data-command="justifyCenter" title="居中">⇋</button>
+                            <button class="toolbar-btn" data-command="justifyRight" title="右对齐">⇥</button>
+                            <span class="toolbar-separator">|</span>
+                            <button class="toolbar-btn" data-command="insertOrderedList" title="添加序号">1.</button>
+                            <button class="toolbar-btn" data-command="insertImage" title="导入图片">🖼</button>
+                            <button class="toolbar-btn" data-command="undo" title="撤销">↺</button>
+                        </div>
+                        <div class="editor-content-area" contenteditable="true"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="create-btn">创建</button>
+            </div>
+        </div>
+    </div>
+    <!-- 在 body 末尾添加教育经历弹窗 -->
+    <div class="education-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>创建新条目</h3>
+                <button class="close-modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>机构</label>
+                    <input type="text" class="modal-input" placeholder="请输入学校名称">
+                </div>
+                <div class="form-group">
+                    <label>研究类型</label>
+                    <input type="text" class="modal-input" placeholder="请输入学位或证书类型">
+                </div>
+                <div class="form-group">
+                    <label>学习领域</label>
+                    <input type="text" class="modal-input" placeholder="请输入专业或研究方向">
+                </div>
+                <div class="form-group">
+                    <label>分数</label>
+                    <input type="text" class="modal-input" placeholder="9.2 GPA">
+                </div>
+                <div class="form-group">
+                    <label>日期或日期范围</label>
+                    <input type="text" class="modal-input" placeholder="2023 年 3 月至今">
+                </div>
+                <div class="form-group">
+                    <label>网站</label>
+                    <div class="modal-input-group">
+                        <input type="text" class="modal-input" placeholder="请输入学校网站">
+                        <button class="copy-link-btn">📋</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>总结</label>
+                    <div class="rich-text-editor">
+                        <div class="editor-toolbar">
+                            <button class="toolbar-btn" data-command="bold" title="加粗">B</button>
+                            <button class="toolbar-btn" data-command="italic" title="倾斜">I</button>
+                            <button class="toolbar-btn" data-command="underline" title="下划线">U</button>
+                            <span class="toolbar-separator">|</span>
+                            <button class="toolbar-btn" data-command="justifyLeft" title="左对齐">⇤</button>
+                            <button class="toolbar-btn" data-command="justifyCenter" title="居中">⇋</button>
+                            <button class="toolbar-btn" data-command="justifyRight" title="右对齐">⇥</button>
+                            <span class="toolbar-separator">|</span>
+                            <button class="toolbar-btn" data-command="insertOrderedList" title="添加序号">1.</button>
+                            <button class="toolbar-btn" data-command="insertImage" title="导入图片">🖼</button>
+                            <button class="toolbar-btn" data-command="undo" title="撤销">↺</button>
+                        </div>
+                        <div class="editor-content-area" contenteditable="true"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="create-btn">创建</button>
+            </div>
+        </div>
+    </div>
+    <!-- 在 body 末尾添加专业技能弹窗 -->
+    <div class="skill-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>创建新条目</h3>
+                <button class="close-modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>名称</label>
+                    <input type="text" class="modal-input" placeholder="请输入技能名称">
+                </div>
+                <div class="form-group">
+                    <label>描述</label>
+                    <input type="text" class="modal-input" placeholder="请输入技能描述">
+                </div>
+                <div class="form-group">
+                    <label>等级</label>
+                    <input type="range" class="modal-range" min="0" max="10" value="5" step="1">
+                    <span class="range-value">5</span>
+                </div>
+                <div class="form-group">
+                    <label>关键词</label>
+                    <input type="text" class="modal-input" placeholder="您可以通过用逗号或回车分隔来添加多个关键字">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="create-btn">创建</button>
+            </div>
+        </div>
+    </div>
+    <!-- 在 body 末尾添加语言情况弹窗 -->
+    <div class="language-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>创建新条目</h3>
+                <button class="close-modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>名称</label>
+                    <input type="text" class="modal-input" placeholder="请输入语言名称">
+                </div>
+                <div class="form-group">
+                    <label>描述</label>
+                    <input type="text" class="modal-input" placeholder="请输入语言描述">
+                </div>
+                <div class="form-group">
+                    <label>等级</label>
+                    <input type="range" class="modal-range" min="0" max="10" value="5" step="1">
+                    <span class="range-value">5</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="create-btn">创建</button>
+            </div>
+        </div>
+    </div>
+    <!-- 在 body 末尾添加奖品奖项弹窗 -->
+    <div class="award-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>创建新条目</h3>
+                <button class="close-modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>标题</label>
+                    <input type="text" class="modal-input" placeholder="请输入奖项标题">
+                </div>
+                <div class="form-group">
+                    <label>授予者</label>
+                    <input type="text" class="modal-input" placeholder="请输入授予者">
+                </div>
+                <div class="form-group">
+                    <label>日期</label>
+                    <input type="text" class="modal-input" placeholder="2023 年 3 月">
+                </div>
+                <div class="form-group">
+                    <label>网站</label>
+                    <div class="modal-input-group">
+                        <input type="text" class="modal-input" placeholder="请输入相关网站">
+                        <button class="copy-link-btn">📋</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>总结</label>
+                    <div class="rich-text-editor">
+                        <div class="editor-toolbar">
+                            <button class="toolbar-btn" data-command="bold" title="加粗">B</button>
+                            <button class="toolbar-btn" data-command="italic" title="倾斜">I</button>
+                            <button class="toolbar-btn" data-command="underline" title="下划线">U</button>
+                            <span class="toolbar-separator">|</span>
+                            <button class="toolbar-btn" data-command="justifyLeft" title="左对齐">⇤</button>
+                            <button class="toolbar-btn" data-command="justifyCenter" title="居中">⇋</button>
+                            <button class="toolbar-btn" data-command="justifyRight" title="右对齐">⇥</button>
+                            <span class="toolbar-separator">|</span>
+                            <button class="toolbar-btn" data-command="insertOrderedList" title="添加序号">1.</button>
+                            <button class="toolbar-btn" data-command="insertImage" title="导入图片">🖼</button>
+                            <button class="toolbar-btn" data-command="undo" title="撤销">↺</button>
+                        </div>
+                        <div class="editor-content-area" contenteditable="true"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="create-btn">创建</button>
+            </div>
+        </div>
+    </div>
+    <!-- 在 body 末尾添加专业证书弹窗 -->
+    <div class="certification-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>创建新条目</h3>
+                <button class="close-modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>名称</label>
+                    <input type="text" class="modal-input" placeholder="请输入证书名称">
+                </div>
+                <div class="form-group">
+                    <label>签发机构</label>
+                    <input type="text" class="modal-input" placeholder="请输入签发机构">
+                </div>
+                <div class="form-group">
+                    <label>日期</label>
+                    <input type="text" class="modal-input" placeholder="2023 年 3 月">
+                </div>
+                <div class="form-group">
+                    <label>网站</label>
+                    <div class="modal-input-group">
+                        <input type="text" class="modal-input" placeholder="https://udemy.com/certificate/">
+                        <button class="copy-link-btn">📋</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>总结</label>
+                    <div class="rich-text-editor">
+                        <div class="editor-toolbar">
+                            <button class="toolbar-btn" data-command="bold" title="加粗">B</button>
+                            <button class="toolbar-btn" data-command="italic" title="倾斜">I</button>
+                            <button class="toolbar-btn" data-command="underline" title="下划线">U</button>
+                            <span class="toolbar-separator">|</span>
+                            <button class="toolbar-btn" data-command="justifyLeft" title="左对齐">⇤</button>
+                            <button class="toolbar-btn" data-command="justifyCenter" title="居中">⇋</button>
+                            <button class="toolbar-btn" data-command="justifyRight" title="右对齐">⇥</button>
+                            <span class="toolbar-separator">|</span>
+                            <button class="toolbar-btn" data-command="insertOrderedList" title="添加序号">1.</button>
+                            <button class="toolbar-btn" data-command="insertImage" title="导入图片">🖼</button>
+                            <button class="toolbar-btn" data-command="undo" title="撤销">↺</button>
+                        </div>
+                        <div class="editor-content-area" contenteditable="true"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="create-btn">创建</button>
+            </div>
+        </div>
+    </div>
+    <!-- 在 body 末尾添加兴趣爱好弹窗 -->
+    <div class="interest-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>创建新条目</h3>
+                <button class="close-modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>名称</label>
+                    <input type="text" class="modal-input" placeholder="请输入爱好名称">
+                </div>
+                <div class="form-group">
+                    <label>关键词</label>
+                    <input type="text" class="modal-input" placeholder="您可以通过用逗号或回车分隔来添加多个关键字">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="create-btn">创建</button>
+            </div>
+        </div>
+    </div>
+    <!-- 在 body 末尾添加项目经验弹窗 -->
+    <div class="project-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>创建新条目</h3>
+                <button class="close-modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>名称</label>
+                    <input type="text" class="modal-input" placeholder="请输入项目名称">
+                </div>
+                <div class="form-group">
+                    <label>描述</label>
+                    <input type="text" class="modal-input" placeholder="请输入项目描述">
+                </div>
+                <div class="form-group">
+                    <label>日期或日期范围</label>
+                    <input type="text" class="modal-input" placeholder="2023 年 3 月至今">
+                </div>
+                <div class="form-group">
+                    <label>网站</label>
+                    <div class="modal-input-group">
+                        <input type="text" class="modal-input" placeholder="https://rxresu.me">
+                        <button class="copy-link-btn">📋</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>总结</label>
+                    <div class="rich-text-editor">
+                        <div class="editor-toolbar">
+                            <button class="toolbar-btn" data-command="bold" title="加粗">B</button>
+                            <button class="toolbar-btn" data-command="italic" title="倾斜">I</button>
+                            <button class="toolbar-btn" data-command="underline" title="下划线">U</button>
+                            <span class="toolbar-separator">|</span>
+                            <button class="toolbar-btn" data-command="justifyLeft" title="左对齐">⇤</button>
+                            <button class="toolbar-btn" data-command="justifyCenter" title="居中">⇋</button>
+                            <button class="toolbar-btn" data-command="justifyRight" title="右对齐">⇥</button>
+                            <span class="toolbar-separator">|</span>
+                            <button class="toolbar-btn" data-command="insertOrderedList" title="添加序号">1.</button>
+                            <button class="toolbar-btn" data-command="insertImage" title="导入图片">🖼</button>
+                            <button class="toolbar-btn" data-command="undo" title="撤销">↺</button>
+                        </div>
+                        <div class="editor-content-area" contenteditable="true"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>关键词</label>
+                    <input type="text" class="modal-input" placeholder="您可以通过用逗号或回车分隔来添加多个关键字">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="create-btn">创建</button>
+            </div>
+        </div>
+    </div>
+    <!-- 在 body 末尾添加发表作品弹窗 -->
+    <div class="publication-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>创建新条目</h3>
+                <button class="close-modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>名称</label>
+                    <input type="text" class="modal-input" placeholder="请输入作品名称">
+                </div>
+                <div class="form-group">
+                    <label>发布者</label>
+                    <input type="text" class="modal-input" placeholder="请输入发布者">
+                </div>
+                <div class="form-group">
+                    <label>日期</label>
+                    <input type="text" class="modal-input" placeholder="2023 年 3 月">
+                </div>
+                <div class="form-group">
+                    <label>网站</label>
+                    <div class="modal-input-group">
+                        <input type="text" class="modal-input" placeholder="https://rxresu.me">
+                        <button class="copy-link-btn">📋</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>总结</label>
+                    <div class="rich-text-editor">
+                        <div class="editor-toolbar">
+                            <button class="toolbar-btn" data-command="bold" title="加粗">B</button>
+                            <button class="toolbar-btn" data-command="italic" title="倾斜">I</button>
+                            <button class="toolbar-btn" data-command="underline" title="下划线">U</button>
+                            <span class="toolbar-separator">|</span>
+                            <button class="toolbar-btn" data-command="justifyLeft" title="左对齐">⇤</button>
+                            <button class="toolbar-btn" data-command="justifyCenter" title="居中">⇋</button>
+                            <button class="toolbar-btn" data-command="justifyRight" title="右对齐">⇥</button>
+                            <span class="toolbar-separator">|</span>
+                            <button class="toolbar-btn" data-command="insertOrderedList" title="添加序号">1.</button>
+                            <button class="toolbar-btn" data-command="insertImage" title="导入图片">🖼</button>
+                            <button class="toolbar-btn" data-command="undo" title="撤销">↺</button>
+                        </div>
+                        <div class="editor-content-area" contenteditable="true"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="create-btn">创建</button>
+            </div>
+        </div>
+    </div>
+    <!-- 在 body 末尾添加志愿经历弹窗 -->
+    <div class="volunteer-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>创建新条目</h3>
+                <button class="close-modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>组织</label>
+                    <input type="text" class="modal-input" placeholder="请输入组织名称">
+                </div>
+                <div class="form-group">
+                    <label>职位</label>
+                    <input type="text" class="modal-input" placeholder="请输入职位名称">
+                </div>
+                <div class="form-group">
+                    <label>日期或日期范围</label>
+                    <input type="text" class="modal-input" placeholder="2023 年 3 月至今">
+                </div>
+                <div class="form-group">
+                    <label>位置</label>
+                    <input type="text" class="modal-input" placeholder="请输入地点">
+                </div>
+                <div class="form-group">
+                    <label>网站</label>
+                    <div class="modal-input-group">
+                        <input type="text" class="modal-input" placeholder="https://rxresu.me">
+                        <button class="copy-link-btn">📋</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>总结</label>
+                    <div class="rich-text-editor">
+                        <div class="editor-toolbar">
+                            <button class="toolbar-btn" data-command="bold" title="加粗">B</button>
+                            <button class="toolbar-btn" data-command="italic" title="倾斜">I</button>
+                            <button class="toolbar-btn" data-command="underline" title="下划线">U</button>
+                            <span class="toolbar-separator">|</span>
+                            <button class="toolbar-btn" data-command="justifyLeft" title="左对齐">⇤</button>
+                            <button class="toolbar-btn" data-command="justifyCenter" title="居中">⇋</button>
+                            <button class="toolbar-btn" data-command="justifyRight" title="右对齐">⇥</button>
+                            <span class="toolbar-separator">|</span>
+                            <button class="toolbar-btn" data-command="insertOrderedList" title="添加序号">1.</button>
+                            <button class="toolbar-btn" data-command="insertImage" title="导入图片">🖼</button>
+                            <button class="toolbar-btn" data-command="undo" title="撤销">↺</button>
+                        </div>
+                        <div class="editor-content-area" contenteditable="true"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="create-btn">创建</button>
+            </div>
+        </div>
+    </div>
+    <!-- 在 body 末尾添加推荐人/信弹窗 -->
+    <div class="reference-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>创建新条目</h3>
+                <button class="close-modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>名称</label>
+                    <input type="text" class="modal-input" placeholder="请输入推荐人姓名">
+                </div>
+                <div class="form-group">
+                    <label>描述</label>
+                    <input type="text" class="modal-input" placeholder="请输入推荐人描述">
+                </div>
+                <div class="form-group">
+                    <label>网站</label>
+                    <div class="modal-input-group">
+                        <input type="text" class="modal-input" placeholder="https://rxresu.me">
+                        <button class="copy-link-btn">📋</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>总结</label>
+                    <div class="rich-text-editor">
+                        <div class="editor-toolbar">
+                            <button class="toolbar-btn" data-command="bold" title="加粗">B</button>
+                            <button class="toolbar-btn" data-command="italic" title="倾斜">I</button>
+                            <button class="toolbar-btn" data-command="underline" title="下划线">U</button>
+                            <span class="toolbar-separator">|</span>
+                            <button class="toolbar-btn" data-command="justifyLeft" title="左对齐">⇤</button>
+                            <button class="toolbar-btn" data-command="justifyCenter" title="居中">⇋</button>
+                            <button class="toolbar-btn" data-command="justifyRight" title="右对齐">⇥</button>
+                            <span class="toolbar-separator">|</span>
+                            <button class="toolbar-btn" data-command="insertOrderedList" title="添加序号">1.</button>
+                            <button class="toolbar-btn" data-command="insertImage" title="导入图片">🖼</button>
+                            <button class="toolbar-btn" data-command="undo" title="撤销">↺</button>
+                        </div>
+                        <div class="editor-content-area" contenteditable="true"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="create-btn">创建</button>
+            </div>
+        </div>
+    </div>
+    <!-- 在 body 末尾添加自定义章节弹窗 -->
+    <div class="custom-section-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>创建新条目</h3>
+                <button class="close-modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>名称</label>
+                    <input type="text" class="modal-input" placeholder="请输入名称">
+                </div>
+                <div class="form-group">
+                    <label>描述</label>
+                    <input type="text" class="modal-input" placeholder="请输入描述">
+                </div>
+                <div class="form-group">
+                    <label>日期或日期范围</label>
+                    <input type="text" class="modal-input" placeholder="2023 年 3 月至今">
+                </div>
+                <div class="form-group">
+                    <label>位置</label>
+                    <input type="text" class="modal-input" placeholder="请输入地点">
+                </div>
+                <div class="form-group">
+                    <label>网站</label>
+                    <div class="modal-input-group">
+                        <input type="text" class="modal-input" placeholder="https://rxresu.me">
+                        <button class="copy-link-btn">📋</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>总结</label>
+                    <div class="rich-text-editor">
+                        <div class="editor-toolbar">
+                            <button class="toolbar-btn" data-command="bold" title="加粗">B</button>
+                            <button class="toolbar-btn" data-command="italic" title="倾斜">I</button>
+                            <button class="toolbar-btn" data-command="underline" title="下划线">U</button>
+                            <span class="toolbar-separator">|</span>
+                            <button class="toolbar-btn" data-command="justifyLeft" title="左对齐">⇤</button>
+                            <button class="toolbar-btn" data-command="justifyCenter" title="居中">⇋</button>
+                            <button class="toolbar-btn" data-command="justifyRight" title="右对齐">⇥</button>
+                            <span class="toolbar-separator">|</span>
+                            <button class="toolbar-btn" data-command="insertOrderedList" title="添加序号">1.</button>
+                            <button class="toolbar-btn" data-command="insertImage" title="导入图片">🖼</button>
+                            <button class="toolbar-btn" data-command="undo" title="撤销">↺</button>
+                        </div>
+                        <div class="editor-content-area" contenteditable="true"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>关键词</label>
+                    <input type="text" class="modal-input" placeholder="您可以通过用逗号或回车分隔来添加多个关键字">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="create-btn">创建</button>
+            </div>
+        </div>
+    </div>
+    <!-- 在 body 末尾添加肖像照片弹窗 -->
+    <div class="portrait-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>上传照片</h3>
+                <button class="close-modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>选择照片</label>
+                    <div class="portrait-upload-area">
+                        <input type="file" class="portrait-input" accept="image/*" style="display: none;">
+                        <div class="portrait-preview">
+                            <div class="upload-placeholder">
+                                <span class="upload-icon">📷</span>
+                                <span class="upload-text">点击或拖拽照片到这里</span>
+                                <span class="upload-hint">支持 JPG、PNG 格式</span>
+                            </div>
+                            <img class="preview-image" style="display: none;">
+                        </div>
+                        <button class="upload-btn">选择照片</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="create-btn">确认上传</button>
+            </div>
+        </div>
+    </div>
+    <!-- 添加 AI 助手弹窗 -->
+    <div class="ai-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>AI 写作助手（研发中）</h3>
+                <button class="close-modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="ai-features">
+                    <button class="ai-feature-btn" data-feature="generate">
+                        <span>✨ 生成内容</span>
+                        <small>根据您的基本信息自动生成简历内容</small>
+                    </button>
+                    <button class="ai-feature-btn" data-feature="optimize">
+                        <span>📝 优化内容</span>
+                        <small>改进现有内容的表达和专业性</small>
+                    </button>
+                    <button class="ai-feature-btn" data-feature="keywords">
+                        <span>🎯 关键词建议</span>
+                        <small>分析职位要求，提供关键词建议</small>
+                    </button>
+                </div>
+                <div class="ai-workspace" style="display: none;">
+                    <textarea class="ai-input" placeholder="请输入职位描述或其他相关信息..."></textarea>
+                    <div class="ai-controls">
+                        <button class="ai-generate-btn">生成</button>
+                        <button class="ai-cancel-btn">取消</button>
+                    </div>
+                    <div class="ai-result"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

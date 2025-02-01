@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简历管理系统</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 左侧边栏 -->
+        <aside class="sidebar">
+            <div class="logo">
+                <span class="rx-logo">Rx</span>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li class="active">
+                        <span class="nav-icon">📄</span>
+                        简历
+                    </li>
+                    <li>
+                        <a href="settings.html" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+                            <span class="nav-icon">⚙️</span>
+                            设置
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="user-info">
+                <div class="avatar">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMiIgZmlsbD0iI2UwZTBlMCIvPjxwYXRoIGQ9Ik0xMiAxNGMyLjIgMCA0LTEuOCA0LTRzLTEuOC00LTQtNC00IDEuOC00IDQgMS44IDQgNCA0em0wIDJjLTIuNyAwLTggMS4zLTggNHYyaDE2di0yYzAtMi43LTUuMy00LTgtNHoiIGZpbGw9IiNiZGJkYmQiLz48L3N2Zz4=" alt="用户头像">
+                </div>
+                <div class="user-details">
+                    <p class="username">访客用户</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- 主要内容区 -->
+        <main class="main-content">
+            <header class="content-header">
+                <h1>简历</h1>
+                <div class="view-options">
+                    <button class="view-btn grid-view">网格</button>
+                    <button class="view-btn list-view">列表</button>
+                </div>
+            </header>
+
+            <div class="resume-grid">
+                <!-- 创建新简历卡片 -->
+                <div class="resume-card new-resume">
+                    <div class="card-content">
+                        <div class="add-icon">+</div>
+                        <h3>创建新简历</h3>
+                        <p>从头开始创建</p>
+                    </div>
+                </div>
+
+                <!-- 导入简历卡片 -->
+                <div class="resume-card import-resume">
+                    <div class="card-content">
+                        <div class="import-icon">↓</div>
+                        <h3>导入现有简历</h3>
+                        <p>LinkedIn、JSON 简历等</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resume-templates">
+                <h2>简历模板</h2>
+                <div class="template-list">
+                    <!-- 模板列表将由 JavaScript 动态生成 -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 创建新简历弹窗 -->
+    <div class="modal" id="newResumeModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="header-title">
+                    <span class="plus-icon">+</span>
+                    <h2>创建新简历</h2>
+                </div>
+                <button class="close-btn">×</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-desc">从给简历命名开始构建你的简历。</p>
+                <form id="newResumeForm">
+                    <div class="form-group">
+                        <label for="resumeTitle">标题</label>
+                        <div class="input-wrapper">
+                            <input type="text" id="resumeTitle" name="resumeTitle" required>
+                            <button type="button" class="random-btn">⚡</button>
+                        </div>
+                        <p class="input-tip">提示：您可以根据您要申请的职位来命名简历。</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="resumeSubtitle">简历</label>
+                        <div class="input-wrapper">
+                            <input type="text" id="resumeSubtitle" name="resumeSubtitle" required>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">创建</button>
+                        <div class="dropdown">
+                            <button type="button" class="btn-dropdown" id="dropdownBtn">
+                                <span class="dropdown-icon">▼</span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <button type="button" class="dropdown-item">创建简历样例</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html> 
